@@ -70,9 +70,11 @@ final class AddNoteCell: UITableViewCell, UITextViewDelegate {
     
     @objc
     private func addButtonTapped(_ sender: UIButton) {
-        delegate?.newNoteAdded(note: ShortNote(text: textView.text))
-        textView.textColor = .lightGray
-        textView.text = "Type something"
+        if (!textView.text.isEmpty && textView.text != "Type something"){
+            delegate?.newNoteAdded(note: ShortNote(text: textView.text))
+            textView.textColor = .lightGray
+            textView.text = "Type something"
+        }
     }
     
     private var textView = UITextView()
